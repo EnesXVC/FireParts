@@ -41,7 +41,7 @@ Tool.Parent = p.Backpack
 local camera = game.Workspace.CurrentCamera
 local originalCFrame = camera.CFrame
 local toggled = false
-local targetCFrame = CFrame.new(-57, 121, 24)
+local targetCFrame = CFrame.new(-62, 118, 23)
 
 local function keepToolEnabled()
     if not p.Backpack:FindFirstChild("Camera") then
