@@ -29,3 +29,43 @@ p.CharacterAdded:Connect(function()
 end)
 
 keepToolEnabled()
+
+--camera
+
+local p = game.Players.LocalPlayer
+local Tool = Instance.new("Tool")
+Tool.Name = "Camera"
+Tool.RequiresHandle = false
+Tool.Parent = p.Backpack
+
+local camera = game.Workspace.CurrentCamera
+local originalCFrame = camera.CFrame
+local toggled = false
+local targetCFrame = CFrame.new(-57, 121, 24)
+
+local function keepToolEnabled()
+    if not p.Backpack:FindFirstChild("Camera") then
+        Tool.Parent = p.Backpack
+    end
+end
+
+Tool.Activated:Connect(function()
+    if toggled then
+        -- Kamerayı eski haline getir
+        camera.CameraType = Enum.CameraType.Custom
+        camera.CFrame = originalCFrame
+    else
+        -- Kamerayı belirlenen konuma ayarla
+        originalCFrame = camera.CFrame
+        camera.CameraType = Enum.CameraType.Scriptable
+        camera.CFrame = targetCFrame
+    end
+    toggled = not toggled
+end)
+
+p.CharacterAdded:Connect(function()
+    wait(0.1) -- Karakter yüklendiğinde biraz bekle
+    keepToolEnabled()
+end)
+
+keepToolEnabled() -- Oyuncu başlatıldığında tool'un her zaman çantada kalmasını sağlar
