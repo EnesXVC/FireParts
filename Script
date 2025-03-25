@@ -1,0 +1,19 @@
+local Tool = Instance.new("Tool")
+Tool.Name = "Fire Parts"
+Tool.RequiresHandle = false
+Tool.Parent = game.Players.LocalPlayer.Backpack
+
+Tool.Activated:Connect(function()
+    local player = game.Players.LocalPlayer
+    local mouse = player:GetMouse()
+    
+    local target = mouse.Target
+    if target and target:IsA("Part") then
+        local touchInterest = target:FindFirstChildOfClass("TouchTransmitter")
+        
+        if touchInterest then
+            firetouchinterest(player.Character.PrimaryPart, target, 0)
+            firetouchinterest(player.Character.PrimaryPart, target, 1)
+        end
+    end
+end)
