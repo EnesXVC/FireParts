@@ -34,17 +34,6 @@ keepToolEnabled()
 
 local CoreGui = game:GetService("StarterGui")
 
-CoreGui:SetCore("SendNotification", {
-    Title = "Script Made IEnes",
-    Text = ":)",
-    Icon = "rbxassetid://29819383",
-    Duration = 2.5,
-})
-
----Admin Detector in Server
-loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/main/Admin'))()
----
-
 local onMobile = not game:GetService("UserInputService").KeyboardEnabled
 local keysDown = {}
 local rotating = false
@@ -218,3 +207,20 @@ if ButtonPressedTime <= 0.5 then
    end
 end
 end)
+--creator
+local Players = game:GetService("Players")
+local StarterGui = game:GetService("StarterGui")
+
+local userId = Players:GetUserIdFromNameAsync("IEnesxvc")
+local thumbType = Enum.ThumbnailType.HeadShot
+local thumbSize = Enum.ThumbnailSize.Size420x420
+local content, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
+
+if isReady then
+    StarterGui:SetCore("SendNotification", {
+        Title = "Made By IEnes",
+        Text = "Thank you for using my script.",
+        Icon = content,
+        Duration = 22
+    })
+end
