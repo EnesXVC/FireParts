@@ -41,7 +41,7 @@ Tool.Parent = p.Backpack
 local camera = game.Workspace.CurrentCamera
 local originalCFrame = camera.CFrame
 local toggled = false
-local targetCFrame = CFrame.new(-62, 118, 23)
+local targetCFrame = CFrame.new(-57, 121, 24) * CFrame.Angles(0, math.rad(90), 0)
 
 local function keepToolEnabled()
     if not p.Backpack:FindFirstChild("Camera") then
@@ -55,7 +55,7 @@ Tool.Activated:Connect(function()
         camera.CameraType = Enum.CameraType.Custom
         camera.CFrame = originalCFrame
     else
-        -- Kamerayı belirlenen konuma ayarla
+
         originalCFrame = camera.CFrame
         camera.CameraType = Enum.CameraType.Scriptable
         camera.CFrame = targetCFrame
@@ -64,8 +64,8 @@ Tool.Activated:Connect(function()
 end)
 
 p.CharacterAdded:Connect(function()
-    wait(0.1) -- Karakter yüklendiğinde biraz bekle
+    task.wait(0.1)
     keepToolEnabled()
 end)
 
-keepToolEnabled() -- Oyuncu başlatıldığında tool'un her zaman çantada kalmasını sağlar
+keepToolEnabled()
