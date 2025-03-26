@@ -219,7 +219,7 @@ local content, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbS
 if isReady then
     StarterGui:SetCore("SendNotification", {
         Title = "Made By IEnes",
-        Text = "Thank you for using my script.",
+        Text = "Thanks for using my script.",
         Icon = content,
         Duration = 7
     })
